@@ -1,9 +1,0 @@
-demo
-
-solution: 
-ubuntu/windows aws to run python script from admin console, can upload to Firebase database/Github repo (best option if there are other things we need to run on ami)
-raspberry pi (probably better solution, since its clunky and physical, but definitely doable)
-django, host web app somewhere accessible
-google compute engine (apparently free tier is fine if script is not CPU intensive apparently, so should be fine) https://cloud.google.com/free/
-
-technology: requests, beautifulsoup4 (could use selenium if requests is blocked)
