@@ -2,11 +2,6 @@ from flask import (
     Flask,
     jsonify)
 from flask_cors import CORS
-from selenium import webdriver
-from bs4 import BeautifulSoup
-
-
-driver = webdriver.Chrome("..\\chromedriver")
 
 # Create the application instance
 app = Flask(__name__, template_folder="templates")

@@ -10,9 +10,15 @@ import { routing } from "./app.routing";
 
 import { PageDefault } from "./app.pagedefault";
 import { PriceMatchComponent } from "./app.pricematch-component";
+import { LandingComponent } from "./app.landing";
 
 @NgModule({
-  declarations: [AppComponent, PageDefault, PriceMatchComponent],
+  declarations: [
+    AppComponent,
+    PageDefault,
+    PriceMatchComponent,
+    LandingComponent
+  ],
   imports: [
     BrowserModule,
     TooltipModule.forRoot(),
