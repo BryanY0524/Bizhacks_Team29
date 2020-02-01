@@ -23,11 +23,11 @@ def scrape_amazon_item(product_dict, product_name, product_id):
 
     soup = BeautifulSoup(content, features="html.parser")
 
-    amazon_sold = soup.findAll('div', attrs={"id": "merchant-info"})
     amazon_tb = soup.findAll('tbody')
 
     for i in amazon_tb:
         if product_id in str(i):
+            amazon_sold = soup.findAll('div', attrs={"id": "merchant-info"})
             if sold_by_amazon_phrase in amazon_sold[0].text:
                 price_scrape = soup.findAll('span', attrs={"id": "priceblock_ourprice"})
                 price_string = price_scrape[0].text
