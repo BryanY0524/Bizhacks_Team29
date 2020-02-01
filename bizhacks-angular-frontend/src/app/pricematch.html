@@ -1,3 +1,45 @@
-PRICE MATCH PAGE {{ productName }} <br />
-{{ productPrice }} <br />
-{{ productImageUrl }}
+<div class="container">
+  <div class="container">
+    <h2>{{ productName }}</h2>
+    <br />
+    <div class="d-flex p-2">
+      <div><img src="{{ productImageUrl }}" /></div>
+      <div class="column" style="padding-left: 5%">
+        <h3>${{ productPrice }}</h3>
+
+        <div>
+          <input class="btn btn-primary" type="button" value="Price Match" />
+        </div>
+        <div>
+          <div>
+            <table class=".table-striped">
+              <tr>
+                <th style="padding: 30px">Store</th>
+                <th style="padding: 30px">Price</th>
+              </tr>
+              <tr>
+                <td>{{ store.name }}</td>
+                <td>{{ product.price }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <input class="btn btn-primary" type="button" value="Add to Cart" />
+        </div>
+        <br />
+        <div>
+          <input
+            class="btn btn-primary"
+            type="button"
+            value="Reserve In Store"
+          />
+        </div>
+        <div>
+          <img src="../assets/images/available.jpg" height="250" width="350" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
