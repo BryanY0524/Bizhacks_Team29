@@ -8,7 +8,7 @@
         <h3>${{ productPrice }}</h3>
 
         <div>
-          <input class="btn btn-primary" type="button" value="Price Match" />
+          <input class="btn btn-primary" type="button" value="Price Match" (click)="getPrices()" />
         </div>
         <div>
           <div>
@@ -30,11 +30,7 @@
         </div>
         <br />
         <div>
-          <input
-            class="btn btn-primary"
-            type="button"
-            value="Reserve In Store"
-          />
+          <input class="btn btn-primary" type="button" value="Reserve In Store" />
         </div>
         <div>
           <img src="../assets/images/available.jpg" height="250" width="350" />

@@ -9,7 +9,9 @@ import { ApiService } from "./ApiService";
 export class PriceMatchComponent {
   productPrice = "";
   productName = "";
+  productModel = "";
   productImageUrl = "";
+  store = { "Amazon": "", "Walmart": "" }
 
   _apiService: ApiService;
   public site = "http://localhost:5000/";
@@ -29,7 +31,22 @@ export class PriceMatchComponent {
     if (result.errorMessage == "") {
       _this.productImageUrl = result.img_url;
       _this.productName = result.name;
+      _this.productModel = result.model_num;
       _this.productPrice = result.price;
+      console.log(result);
+    } else {
+      alert("Unable to get data");
+    }
+  }
+
+  getPrices() {
+    this._apiService.getData(this.productName + "/" + this.productModel, this.getPricesCallback)
+  }
+
+  getPricesCallback(result, _this) {
+    if (result.errorMessage == "") {
+      _this.store['Amazon'] = result.Amazon;
+      _this.store['Walmart'] = result.Walmart;
       console.log(result);
     } else {
       alert("Unable to get data");

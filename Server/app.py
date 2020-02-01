@@ -1,11 +1,8 @@
-from flask import (
-    Flask,
-    jsonify)
+from flask import (Flask, jsonify)
 from flask_cors import CORS
 from selenium import webdriver
-from Scrape_Scripts import walmart_scrape as walmart
-from Scrape_Scripts import amazon_scrape as amazon
-
+import walmart_scrape as walmart
+import amazon_scrape as amazon
 
 # Create the application instance
 app = Flask(__name__)
@@ -17,10 +14,13 @@ CORS(app)
 def home():
     driver = webdriver.Chrome("..\\chromedriver")
 
-    response = jsonify(name='HP Pavilion 15.6" Gaming Laptop (Intel Core i5-9300H/512GB SSD/16GB RAM/GeForce GTX 1650)',
-                       price=1399.99,
-                       img_url='https://images-na.ssl-images-amazon.com/images/I/810gynDZHzL._AC_SX466_.jpg',
-                       errorMessage="")
+    response = jsonify(
+        name='Samsung 65" 4K UHD HDR LED Tizen Smart TV (UN65RU7100FXZC)',
+        price=899.99,
+        img_url=
+        'https://multimedia.bbycastatic.ca/multimedia/products/500x500/134/13407/13407265.jpg',
+        model_num="UN65RU7100FXZC",
+        errorMessage="")
 
     response.headers.add('Access-Control-Allow-Origin', '*')
     driver.close()
