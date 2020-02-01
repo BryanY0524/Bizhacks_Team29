@@ -2,6 +2,7 @@ from flask import (
     Flask,
     jsonify)
 from flask_cors import CORS
+
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import re
