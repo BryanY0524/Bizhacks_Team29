@@ -1,38 +1,12 @@
-from flask import (
-    Flask,
-    jsonify)
-from flask_cors import CORS
 from selenium import webdriver
 from bs4 import BeautifulSoup
-
+import json
 
 driver = webdriver.Chrome("..\\chromedriver")
-
-# Create the application instance
-app = Flask(__name__, template_folder="templates")
-CORS(app)
+driver.get("https://www.walmart.ca/en")
 
 
-# Create a URL route in our application for "/"
-@app.route('/')
-def home():
-    """
-    This function just responds to the browser ULR
-    localhost:5000/
-
-    :return:        the rendered template 'home.html'
-    """
-    response = jsonify(name='HP Pavilion 15.6" Gaming Laptop (Intel Core i5-9300H/512GB SSD/16GB RAM/GeForce GTX 1650)',
-                       price=1399.99,
-                       img_url='https://images-na.ssl-images-amazon.com/images/I/810gynDZHzL._AC_SX466_.jpg',
-                       errorMessage="")
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
-
-
-@app.route('/bob/')
 def fun():
-    driver.get("https://www.walmart.ca/en")
     try:
         searchbox_input = driver.find_elements_by_tag_name("input")[0]
         searchbox_input.send_keys(
@@ -76,8 +50,9 @@ def fun():
     finally:
         driver.close()
 
-    return jsonify(item_dict)
+    print(item_dict)
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
+fun()
+    #
+    # with open("walmart_data.json", "w", encoding="utf-8") as json_outfile:
+    #     print(json.dump(item_dict, json_outfile))
