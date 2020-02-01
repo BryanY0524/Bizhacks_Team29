@@ -1,2 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+html {
+    height: 100%;
+}
+
+div>h1 {
+    margin: auto;
+    font-size: 3.5rem;
+    width: 75%;
+    padding: 10px;
+    text-align: center;
+}
+
+div>h2 {
+    margin: auto;
+    font-size: 2rem;
+    width: 75%;
+    padding: 10px;
+    text-align: center;
+}
