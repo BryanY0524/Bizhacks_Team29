@@ -5,6 +5,9 @@ import { ModalModule } from "ngx-bootstrap/modal";
 
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
+
+import { NgxSpinnerModule } from "ngx-spinner";
+
 import { FormsModule } from "@angular/forms";
 import { routing } from "./app.routing";
 
@@ -29,7 +32,8 @@ import { ProductsComponent } from "./app.products"
     ModalModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    routing
+    routing,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
