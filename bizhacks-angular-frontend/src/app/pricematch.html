@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="container">
     <h2>{{ productName }}</h2>
@@ -12,16 +13,22 @@
         </div>
         <div>
           <div>
-            <table class=".table-striped">
+            <div>
+            </div>
+            <table class=".table-striped" *ngIf="!spinnerStatus && priceMatchToggle">
               <tr>
                 <th style="padding: 30px">Store</th>
                 <th style="padding: 30px">Price</th>
               </tr>
-              <tr>
-                <td>{{ store.name }}</td>
-                <td>{{ product.price }}</td>
+              <tr *ngFor="let store of stores">
+                <td>{{ store[0] }}</td>
+                <td>{{ store[1] }}</td>
               </tr>
             </table>
+            <div *ngIf="spinnerStatus">
+              <img src="../assets/images/spinner.gif" />
+            </div>
+            <br>
           </div>
         </div>
 

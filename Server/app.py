@@ -15,11 +15,11 @@ def home():
     driver = webdriver.Chrome("..\\chromedriver")
 
     response = jsonify(
-        name='Samsung 65" 4K UHD HDR LED Tizen Smart TV (UN65RU7100FXZC)',
-        price=899.99,
+        name='Samsung 43" 4K UHD HDR LED Tizen Smart TV',
+        price=369.99,
         img_url=
-        'https://multimedia.bbycastatic.ca/multimedia/products/500x500/134/13407/13407265.jpg',
-        model_num="UN65RU7100FXZC",
+        'https://multimedia.bbycastatic.ca/multimedia/products/500x500/127/12785/12785901.jpg',
+        model_num="UN43NU6900FXZC",
         errorMessage="")
 
     response.headers.add('Access-Control-Allow-Origin', '*')
