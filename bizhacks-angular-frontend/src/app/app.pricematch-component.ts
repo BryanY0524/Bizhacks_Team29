@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ApiService } from "./ApiService";
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: "app-root",
@@ -11,17 +13,22 @@ export class PriceMatchComponent {
   productName = "";
   productModel = "";
   productImageUrl = "";
-  store = { "Amazon": "", "Walmart": "" }
+  spinnerStatus: boolean = false;
+  stores = [["Amazon"], ["Walmart"]]
+  priceMatchToggle: boolean = false;
 
   _apiService: ApiService;
   public site = "http://localhost:5000/";
 
   // API SERVICE
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private spinner: NgxSpinnerService) {
     // Pass in http module and pointer to AppComponent.
     this._apiService = new ApiService(http, this);
     this.getProductData();
+    
   }
+
+
 
   // GETTING PRODUCT DATA
   getProductData() {
@@ -40,16 +47,30 @@ export class PriceMatchComponent {
   }
 
   getPrices() {
-    this._apiService.getData(this.productName + "/" + this.productModel, this.getPricesCallback)
+    this.priceMatchToggle = true;
+    this.spinnerStatus = true;
+
+    this._apiService.getData("product" + "/" + this.productName + "/" + this.productModel, this.getPricesCallback)
   }
 
   getPricesCallback(result, _this) {
-    if (result.errorMessage == "") {
-      _this.store['Amazon'] = result.Amazon;
-      _this.store['Walmart'] = result.Walmart;
-      console.log(result);
+    console.log(result);  
+    
+    // turn off spiner
+    if (result.Amazon == "Undefined") {
+      _this.stores[0][1] = "Not Available"
     } else {
-      alert("Unable to get data");
+      _this.stores[0][1] = result.Amazon;
     }
+    if (result.Walmart == "Undefined") {
+      _this.stores[1][1] = "Not Available"
+    } else {
+      _this.stores[1][1] = result.Walmart;
+    }
+
+    console.log(_this.store);
+    _this.spinnerStatus = false;
   }
+
+
 }
