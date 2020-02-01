@@ -7,14 +7,18 @@ import { ApiService } from "./ApiService";
   templateUrl: "landing.html"
 })
 export class LandingComponent {
+  public localsite = "http://localhost:4200/";
   helpState: boolean = false;
+  tv_url: string = "#"
 
   // toggle help on and off
   toggleHelp() {
     if (this.helpState == false) {
       this.helpState = true;
+      this.tv_url = this.localsite + "tv_question"
     } else {
       this.helpState = false;
+      this.tv_url = "#"
     }
   }
 

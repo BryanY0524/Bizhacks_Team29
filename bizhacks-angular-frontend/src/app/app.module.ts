@@ -11,13 +11,17 @@ import { routing } from "./app.routing";
 import { PageDefault } from "./app.pagedefault";
 import { PriceMatchComponent } from "./app.pricematch-component";
 import { LandingComponent } from "./app.landing";
+import { TVQuestionComponent } from "./app.tvquestion";
+import { ProductsComponent } from "./app.products"
 
 @NgModule({
   declarations: [
     AppComponent,
     PageDefault,
     PriceMatchComponent,
-    LandingComponent
+    LandingComponent,
+    TVQuestionComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,4 +34,4 @@ import { LandingComponent } from "./app.landing";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
