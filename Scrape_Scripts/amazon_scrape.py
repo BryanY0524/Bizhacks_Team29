@@ -7,10 +7,13 @@ import warnings
 
 
 def scrape_amazon(pro_name, pro_id):
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
-    url = 'https://www.amazon.ca/s?k='+pro_name+'&ref=nb_sb_noss'
+    # headers = {
+    #    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 
+    headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
+
+    url = 'https://www.amazon.ca/s?k='+pro_name+'&ref=nb_sb_noss'
+    # url = 'https://www.amazon.ca/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords='+pro_name
     session = HTMLSession()
     if not sys.warnoptions:
         warnings.simplefilter("ignore")
@@ -20,7 +23,7 @@ def scrape_amazon(pro_name, pro_id):
     content = response.content
 
     soup = BeautifulSoup(content, features="html.parser")
-
+    print(soup)
     product_link = soup.findAll('a', attrs={"class": "a-link-normal a-text-normal"})
     product_link_list = []
 
@@ -33,6 +36,7 @@ def scrape_amazon(pro_name, pro_id):
                 if child.name == "span":
                     product_link_list.append({"pro_name": child.text, "link": i['href']})
 
+    print(product_link_list)
     match_list = []
 
     if len(product_link_list) == 0:
@@ -57,3 +61,6 @@ def get_num(s):
     for i in range(len(s)):
         if s[i].isdigit():
             return s[i:]
+
+
+scrape_amazon("Samsung 43 4K UHD HDR LED Tizen Smart TV (UN43NU6900FXZC)", "UN43NU6900FXZC")
