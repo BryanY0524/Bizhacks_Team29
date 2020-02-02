@@ -5,23 +5,37 @@ import { ModalModule } from "ngx-bootstrap/modal";
 
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
+
+import { NgxSpinnerModule } from "ngx-spinner";
+
 import { FormsModule } from "@angular/forms";
 import { routing } from "./app.routing";
 
 import { PageDefault } from "./app.pagedefault";
 import { PriceMatchComponent } from "./app.pricematch-component";
+import { LandingComponent } from "./app.landing";
+import { TVQuestionComponent } from "./app.tvquestion";
+import { ProductsComponent } from "./app.products"
 
 @NgModule({
-  declarations: [AppComponent, PageDefault, PriceMatchComponent],
+  declarations: [
+    AppComponent,
+    PageDefault,
+    PriceMatchComponent,
+    LandingComponent,
+    TVQuestionComponent,
+    ProductsComponent
+  ],
   imports: [
     BrowserModule,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    routing
+    routing,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

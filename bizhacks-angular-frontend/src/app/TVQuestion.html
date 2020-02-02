@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div id="introduction container" *ngIf="counter==0">
+        <h1>Hey there, let me help you today with picking out the perfect TV for you!</h1>
+    </div>
+    <div id="q1" class="container" *ngIf="counter==1">
+        <h2>Let me ask you this before we start</h2>
+        <h2>How familiar are you with technology and TVs in general?</h2>
+        <input type="radio" name="tech-level" value="4">Pretty familiar, I would consider myself to be a very tech-savvy
+        person
+        <br>
+        <input type="radio" name="tech-level" value="3">Somewhat familiar, I would consider myself to be a novice at
+        technology<br>
+        <input type="radio" name="tech-level" value="2">Not that familiar, I'm not that tech-savvy<br>
+        <input type="radio" name="tech-level" value="1">No experience at all <br>
+    </div>
+
+    <div id="q2" class="container" *ngIf="counter==2">
+        <h2>Great, the first question I have for you is whether you have a brand you're looking for, please write down
+            into
+            the
+            input below and press continue when ready</h2>
+        <input style="width: 100%" type="text" placeholder="For multiple brands, seperate them with ,">
+    </div>
+
+    <div id="q3" class="container" *ngIf="counter==3">
+        <h2>Awesome! do you care more about the screen size of the tv, or more about the functionality?</h2>
+        <input type="radio" name="preference" value="size">Screen size is more important to me!
+        <br>
+        <input type="radio" name="preference" value="functionality">Functionality is more important to me!<br>
+    </div>
+
+    <div id="q4" class="container" *ngIf="counter==4">
+        <h2>Since you picked screen size, what size range were you looking at?</h2>
+        <input type="radio" name="size" value="29">29 inch and smaller <br>
+        <input type="radio" name="size" value="35">30-35 inches <br>
+        <input type="radio" name="size" value="45">36-45 inches <br>
+        <input type="radio" name="size" value="52">46-52 inches <br>
+        <input type="radio" name="size" value="59">53-59 inches <br>
+        <input type="radio" name="size" value="69">60-69 inches <br>
+        <input type="radio" name="size" value="79">70-79 inches <br>
+        <input type="radio" name="size" value="80">80 inches and larger <br>
+    </div>
+
+    <div id="q5" class="container" *ngIf="counter==5">
+        <h2>Do you care about the smart functionalities to your TV?</h2>
+        <input type="radio" name="smart" value="yes">Yes <br>
+        <input type="radio" name="smart" value="no">No <br>
+    </div>
+
+    <div id="q6" class="container" *ngIf="counter==6">
+        <h2>What is your preferred Smart TV platform?</h2>
+        <input type="radio" name="smart_platform" value="LG webOS">LG webOS <br>
+        <input type="radio" name="smart_platform" value="Roku TV">Roku TV <br>
+        <input type="radio" name="smart_platform" value="Samsung Smart TV (Tizen)">Samsung Smart TV (Tizen)<br>
+        <input type="radio" name="smart_platform" value="Android TV">Android TV<br>
+        <input type="radio" name="smart_platform" value="Amazon Fire TV OS">Amazon Fire TV OS<br>
+    </div>
+
+    <div id="end" *ngIf="counter==7">
+        <h1>Okay, I think I might just have what you're looking for, click the button below to continue</h1>
+    </div>
+
+    <div id="button" *ngIf="counter < 8">
+        <br><br><br>
+        <button class="btn btn-success btn-block" id="continue" (click)="next()">Continue</button>
+        <button class="btn btn-secondary btn-block" id="back" (click)="back()" *ngIf="counter > 1">Back</button>
+    </div>
+
+    <br />
+    <div class="d-flex justify-content-center">
+    <img src="https://img.bbystatic.com/BestBuy_US/en_US/images/abn/2013/global/pr/110897_StayConnected/BlueShirt.jpg" height="300" width="250" />
+    </div>
+</div>

@@ -1,31 +1,39 @@
-from flask import (
-    Flask,
-    jsonify)
+from flask import (Flask, jsonify)
 from flask_cors import CORS
-
+from selenium import webdriver
+import walmart_scrape as walmart
+import amazon_scrape as amazon
 
 # Create the application instance
-app = Flask(__name__, template_folder="templates")
+app = Flask(__name__)
 CORS(app)
 
 
 # Create a URL route in our application for "/"
 @app.route('/')
 def home():
-    """
-    This function just responds to the browser ULR
-    localhost:5000/
+    driver = webdriver.Chrome("..\\chromedriver")
 
-    :return:        the rendered template 'home.html'
-    """
-    response = jsonify(name='HP Pavilion 15.6" Gaming Laptop (Intel Core i5-9300H/512GB SSD/16GB RAM/GeForce GTX 1650)',
-                       price=1399.99,
-                       img_url='https://images-na.ssl-images-amazon.com/images/I/810gynDZHzL._AC_SX466_.jpg',
-                       errorMessage="")
+    response = jsonify(
+        name='Samsung 43" 4K UHD HDR LED Tizen Smart TV',
+        price=369.99,
+        img_url=
+        'https://multimedia.bbycastatic.ca/multimedia/products/500x500/127/12785/12785901.jpg',
+        model_num="UN43NU6900FXZC",
+        errorMessage="")
+
     response.headers.add('Access-Control-Allow-Origin', '*')
+    driver.close()
     return response
 
 
-# If we're running in stand alone mode, run the application
+@app.route('/product/<pro_name>/<pro_id>')
+def send_all(pro_name, pro_id):
+    wm = walmart.scrape_walmart(pro_name, pro_id)
+    am = amazon.scrape_amazon(pro_name, pro_id)
+
+    return jsonify(Walmart=wm, Amazon=am)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
