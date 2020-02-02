@@ -153,3 +153,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+Scrape_Scripts/microsoft_scraper.py
